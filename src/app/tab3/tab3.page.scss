@@ -1,0 +1,24 @@
+
+.decorate{
+    width: 8px;
+    height: 20px;
+    background-color: green;
+    margin-right: 10px;
+}
+
+ion-label{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.cell{
+    // border: 1px solid gray;
+    padding: 10px 10px;
+    background-color: honeydew;
+}
+
+.cell>img{
+    // width: 50px;
+    border-radius: 3px;
+    height: 80px;
+}

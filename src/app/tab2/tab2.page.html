@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-searchbar placeholder="请输入书名或作者" [(ngModel)]="searchValue" animated mode="ios" style="margin-top: 10px;"
+      (ionChange)="search($event)"></ion-searchbar>
+    <!-- <ion-button slot="end" fill="clear"><ion-icon name="close-outline"></ion-icon></ion-button> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="res">
+  <ion-slides pager [options]="{autoplay:{ disableOnInteraction:false },loop:true}">
+    <ion-slide>
+      <img src="../../assets/banner.jpg" alt="">
+    </ion-slide>
+    <ion-slide>
+      <img src="../../assets/banner2.jpg" alt="">
+    </ion-slide>
+    <ion-slide>
+      <img src="../../assets/banner3.jpg" alt="">
+    </ion-slide>
+  </ion-slides>
+
+
+  <div *ngIf="searchValue" style="position: relative;">
+    <div *ngIf="searchRes">
+      <div *ngIf="searchRes.books.length<1" class="searchnull">
+        <h1>查询不到，请换个关键词吧</h1>
+      </div>
+      <!-- <div *ngIf="toTop" style="position: absolute;top: 80%;right: 50px;">
+        <ion-button (click)="goTop()" expand="block" fill="clear" shape="round" icon="chevron-up-outline">
+          Click me
+        </ion-button>
+      </div> -->
+      <ion-item  *ngFor="let book of searchRes.books" class="cell" (click)="detail(book._id,book.title)">
+        <img [src]="'http://statics.zhuishushenqi.com'+book.cover" alt="">
+          <div style="display: flex;" class="cell_son">
+            <p class="title">{{book.title}}</p>
+            <p>{{book.author}}</p>
+            <p class="shortIntro">{{book.shortIntro}}</p>
+            <p>保留率：{{book.retentionRatio}}%</p>
+          </div>
+      </ion-item>
+      <ion-infinite-scroll threshold="10px" [disabled]="total-limit-1<=start" position="bottom" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content loadingSpinner="circles" loadingText="加载中...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </div>
+
+  </div>
+
+  <div *ngIf="!searchValue">
+    <div *ngFor="let item of res.epub;let index = index" class="category">
+      <ion-item button detail class="nav" (click)="jump(item._id,item.title)">
+        <ion-label color="success">{{item.title}}</ion-label>
+      </ion-item>
+      <ion-item *ngFor="let book of bookList[index]" class="cell" (click)="detail(book._id,book.title)">
+        <img [src]="'http://statics.zhuishushenqi.com'+book.cover" alt="">
+        <div style="display: flex;" class="cell_son">
+          <p class="title">{{book.title}}</p>
+          <p>{{book.author}}</p>
+          <p class="shortIntro">{{book.shortIntro}}</p>
+          <p>保留率：{{book.retentionRatio}}%</p>
+        </div>
+      </ion-item>
+    </div>
+  </div>
+
+</ion-content>

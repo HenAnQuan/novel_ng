@@ -1,0 +1,47 @@
+ion-toolbar{
+    --background: white;
+}
+ion-title{
+    color: green;
+    text-align: center;
+    font-weight: bold;
+    padding-right: 45px;
+}
+
+.cell{
+    display: flex;
+    align-items: center;
+    padding: 3px;
+}
+
+.cell>img{
+    width: 60px;
+    height: 120px;
+    flex: 2;
+    border-radius: 4px;
+}
+
+.cell_son{
+    flex: 5;
+    margin-left: 8px;
+}
+
+.book_title{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.cell_son>p{
+    margin-top: 3px;
+    font-size: 10px;
+}
+
+.book_shortIntro{
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}

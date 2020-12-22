@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align: center;">用户注册登录</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+  <p (click)="test()"></p>
+<ion-content>
+
+  <div style="font-size: 16px;display: flex;padding:0 15px;width: 100%;">
+    <!-- <p style="flex: 1;text-align:center;padding-bottom: 10px;" [ngClass]="{'greenBottom': !regist}" (click)="changeSlide("login")">用户登录</p> -->
+    <!-- <p style="flex: 1;text-align:center;padding-bottom: 10px;" [ngClass]="{'greenBottom': regist}" (click)="regist()">账号注册</p>  -->
+  </div>
+
+  <ion-slides md="md">
+    <ion-slide>
+      <div style="width: 80%">
+        <ion-item>
+          <ion-input type="text" placeholder="用户名" [(ngModel)]="uname" (ionBlur)="userExist()"></ion-input>
+          <ion-icon *ngIf="userExistence" slot="end" src="../../assets/right.svg" style="font-size: 16px;"></ion-icon>
+          <ion-icon *ngIf="!userExistence" slot="end" src="../../assets/wrong.svg" style="font-size: 16px;"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-input [type]="PwdInputType1" placeholder="密码" [(ngModel)]="upwd"></ion-input>
+          <ion-icon *ngIf="hiddenPwd1" (click)="changehiddenPwd('1')" slot="end" src="../../assets/hide.svg" style="font-size:18px;"></ion-icon>
+          <ion-icon *ngIf="!hiddenPwd1" (click)="changehiddenPwd('1')" slot="end" src="../../assets/show.svg" style="font-size: 24px;"></ion-icon>
+
+        </ion-item>
+        <ion-button expand="block" fill="solid" color="success" style="margin-top: 20px;" (click)="login()">登录</ion-button>
+        <p style="font-size: 12px;margin-top: 20px;color:gray;">登录账号享受更多福利</p>
+        <div style="margin-top: 30px;">
+          <ion-button color="success" (click)="weixinLogin()">
+            <ion-icon name="logo-wechat"></ion-icon>
+          </ion-button>
+          <p style="margin-top:0;font-size: 12px;">微信登录</p>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div style="width: 80%">
+        <ion-item>
+          <ion-input type="text" placeholder="用户名" [(ngModel)]="registerUname" (ionBlur)="judgeRegisterInfo('uname')"></ion-input>
+          <ion-icon slot="end" src="../../assets/wrong.svg" style="font-size: 16px;"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-input [type]="PwdInputType2" placeholder="密码" [(ngModel)]="registerUpwd" (ionBlur)="judgeRegisterInfo('upwd')"></ion-input>
+          <ion-icon *ngIf="hiddenPwd2" (click)="changehiddenPwd('2')" slot="end" src="../../assets/hide.svg" style="font-size:18px;"></ion-icon>
+          <ion-icon *ngIf="!hiddenPwd2" (click)="changehiddenPwd('2')" slot="end" src="../../assets/show.svg" style="font-size: 24px;"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-input [type]="PwdInputType3" placeholder="确认密码" [(ngModel)]="registerUpwdRe" (ionBlur)="judgeRegisterInfo('upwdRe')"></ion-input>
+          <ion-icon *ngIf="hiddenPwd3" (click)="changehiddenPwd('3')" slot="end" src="../../assets/hide.svg" style="font-size:18px;"></ion-icon>
+          <ion-icon *ngIf="!hiddenPwd3" (click)="changehiddenPwd('3')" slot="end" src="../../assets/show.svg" style="font-size: 24px;"></ion-icon>
+        </ion-item>
+        <ion-button expand="block" fill="solid" color="success" style="margin-top: 20px;" (click)="register()">注册</ion-button>
+        <p style="font-size: 12px;margin-top: 20px;color:gray;">登录账号享受更多福利</p>
+        
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+
+</ion-content>

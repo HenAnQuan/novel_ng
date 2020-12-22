@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-searchbar placeholder="请输入书名或作者" [(ngModel)]="searchValue" (ionChange)="search($event)" animated mode="ios"></ion-searchbar>
+    <div slot="end" style="display:flex;align-items:center;justify-content: space-around;margin: 0 15px;">
+      <ion-button class="search" (click)="search()" fill="clear" shape="round" style="margin-right: 10px;">
+        <!-- <ion-icon slot="start" name="add"></ion-icon> -->
+      </ion-button>
+      <ion-icon name="ellipsis-vertical-outline" (click)="presentPopover($event)"></ion-icon>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid fixed *ngIf="searchValue==''">
+    <ion-row style="flex-direction: row;" *ngIf="books.length>0">
+      <ion-col size="4" style="padding: 5px;margin-top: 10px;" *ngFor="let book of books"> 
+        <div>
+          <img [src]="'http://statics.zhuishushenqi.com'+book.cover" alt="">
+          <div class="book-title">
+            <p>{{book.title}}</p>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid fixed *ngIf="searchValue!=''">
+    <ion-row style="flex-direction: row;" *ngIf="searchBooks.length>0">
+      <ion-col size="4" style="padding: 5px;margin-top: 10px;" *ngFor="let book of searchBooks"> 
+        <div>
+          <img [src]="'http://statics.zhuishushenqi.com'+book.cover" alt="">
+          <div class="book-title">
+            <p>{{book.title}}</p>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="searchBooks.length==0">
+      <ion-col size="12">查无此书</ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+</ion-content>

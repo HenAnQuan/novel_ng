@@ -1,0 +1,26 @@
+<div *ngIf="searchValue" style="position: relative;">
+  <div *ngIf="searchRes">
+    <div *ngIf="searchRes.books.length<1" class="searchnull">
+      <h1>查询不到，请换个关键词吧</h1>
+    </div>
+    <!-- <div *ngIf="toTop" style="position: absolute;top: 80%;right: 50px;">
+      <ion-button (click)="goTop()" expand="block" fill="clear" shape="round" icon="chevron-up-outline">
+        Click me
+      </ion-button>
+    </div> -->
+    <ion-item  *ngFor="let book of searchRes.books" class="cell" (click)="detail(book._id,book.title)">
+      <img [src]="'http://statics.zhuishushenqi.com'+book.cover" alt="">
+        <div style="display: flex;" class="cell_son">
+          <p class="title">{{book.title}}</p>
+          <p>{{book.author}}</p>
+          <p class="shortIntro">{{book.shortIntro}}</p>
+          <p>保留率：{{book.retentionRatio}}%</p>
+        </div>
+    </ion-item>
+    <ion-infinite-scroll threshold="10px" [disabled]="total-limit-1<=start" position="bottom" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content loadingSpinner="circles" loadingText="加载中...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+
+</div>

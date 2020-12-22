@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{book_title}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content *ngIf="res" style="position: relative;"> -->
+<ion-content *ngIf="res">
+
+  <ion-item class="cell">
+    <img [src]="'http://statics.zhuishushenqi.com'+res.cover" alt="">
+    <div class="cell_son">
+      <h2 class="book_title">{{res.title}}</h2>
+      <p class="book_author"><a>{{res.author}}</a> | {{res.cat}} | {{Count(res.wordCount)}}</p>
+      <p>评分：{{res.rating.score}}</p>
+      <p class="updated">更新时间：{{UpdateTime(res.updated)}}</p>
+    </div>
+  </ion-item>
+
+  <ion-item class="book_longIntro">
+    <div>
+      <p style="text-indent:2em" [ngClass]="{'hidden': longIntroHidden,'show':!longIntroHidden}">{{res.longIntro}}</p>
+      <!-- <div style="text-align: end;"> -->
+      <a (click)="changeIntroHidden()">{{controlHidden}}</a>
+      <!-- </div> -->
+
+      <!-- <ion-icon (click)="changeIntroHidden()" *ngIf="longIntroHidden" name="chevron-down-outline" slot="end"></ion-icon>
+    <ion-icon (click)="changeIntroHidden()" *ngIf="!longIntroHidden" name="chevron-up-outline" slot="end"></ion-icon> -->
+    </div>
+
+  </ion-item>
+
+  <ion-item class="book_chapter">
+    <div>
+      <p style="font-weight:bold;">查看目录</p>
+      <p style="color: rgba(1,1,1,.7);">{{res.lastChapter}}</p>
+    </div>
+  </ion-item>
+  <ion-item class="reviews">
+    <div *ngIf="review">
+      <h3 style="font-size: 16px;">书友评论（{{review.total}}）</h3>
+      <div *ngFor="let item of review.reviews">
+        <div class="author">
+          <img [src]="'http://statics.zhuishushenqi.com'+item.author.avatar" alt="">
+          <span>{{item.author.nickname}}</span>
+        </div>
+        <div class="content">
+          <a (click)="change($event)"><p class="review_hidden">{{item.content}}</p></a>
+          <p class="time">{{item.updated | date:'yyyy-MM-dd' }}</p>
+        </div>
+        <div *ngIf="review.total==0">
+          <p>暂无书评</p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!review">没有书评</div>
+  </ion-item>
+
+</ion-content>
+
+<div style="width: 100%;display:flex;" class="tabs">
+  <button class="addBookList">加入书架</button>
+  <button class="startRead">开始阅读</button>
+  <button class="share">分享</button>
+</div>

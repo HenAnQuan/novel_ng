@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{list_name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="books">
+  <ion-item *ngFor="let item of books;let index = index" class="cell" (click)="jump(item._id,item.title)">
+    <img [src]="'http://statics.zhuishushenqi.com'+item.cover" alt="">
+    <div class="cell_son">
+      <h2 class="book_title">{{item.title}}</h2>
+      <p class="book_author">{{item.author}}</p>
+      <p class="book_shortIntro">{{item.shortIntro}}</p>
+      <p class="retentinoRatio">保留率：{{item.retentionRatio}}%</p>
+    </div>
+  </ion-item>
+</ion-content>

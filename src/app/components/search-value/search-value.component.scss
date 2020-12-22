@@ -1,0 +1,44 @@
+@import "../../../assets/reset.css";
+.searchnull h1{
+  margin-top: 50px;
+  font-size: 14px;
+  color:red;
+  font-weight: bold;
+  text-align: center;
+}
+
+.category {
+  margin-top: 20px;
+}
+.category .nav>ion-label{
+    font-weight: bold;
+}
+.cell {
+  // display: flex;
+  // margin: 20px 0;
+}
+.cell > img {
+  height: 90px;
+  width: 60px;
+  margin: 15px 15px 15px;
+  border-radius: 5px;
+}
+.cell_son{
+    display: flex;
+    flex-direction: column;
+    // justify-content: flex-start;
+}
+.cell_son>p{
+    margin-top: 3px;
+    font-size: 10px;
+}
+.cell_son>.title{
+    font-size: 16px;
+    font-weight: bold;
+}
+.shortIntro {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}

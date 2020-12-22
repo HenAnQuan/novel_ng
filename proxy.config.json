@@ -1,0 +1,20 @@
+ {
+  "/home": {
+      "target": "https://api.zhuishushenqi.com/",
+      "logLevel": "debug",
+      "secure": false, 
+      "changeOrigin": true, 
+      "pathRewrite": {
+          "^/home": ""
+      }
+  },
+  "/photo": {
+        "target": "http://statics.zhuishushenqi.com/",
+        "logLevel": "debug",
+        "secure": false, 
+        "changeOrigin": true, 
+        "pathRewrite": {
+            "^/photo": ""
+        }
+    }
+}

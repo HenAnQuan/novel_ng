@@ -1,0 +1,50 @@
+<ion-content>
+  <div class="card">
+    <div style="width: 100%;margin-left: 30px;">
+      <div style="display: flex;align-items: center;" [routerLink]="['/login']">
+        <!-- <ion-icon src="../../assets/user.png" style="font-size: 32px;"></ion-icon> -->
+        <div style="background-color:white;border-radius: 30px;overflow: hidden;width: 54px;height: 54px;">
+          <img src="../../assets/user.png" alt="" width="54px" height="54px">
+        </div>
+        <div class="mine" style="color: white;margin-left: 15px;">
+          <p>登录/注册</p>
+          <div style="background-color:rgb(9, 170, 89);border-radius: 30px;overflow: hidden;width: 18px;height: 18px;margin-top: 7px;text-align: center;">
+            <img src="../../assets/sex.png" width="12px" height="12px" style="margin-top: 3px;">
+          </div>
+        </div>
+      </div>
+      <div style="color: white;font-size: 12px;margin-top: 12px;">
+        <span>编辑个人资料</span>
+        <span style="margin-left:15px">个性签名</span>
+      </div>
+    </div>
+  </div>
+  <ion-item-group>
+    <ion-item button detail (click)="jump()">
+      <!-- <ion-icon name="chatbox-ellipses-outline"></ion-icon> -->
+      <ion-icon src="../../assets/comment.svg"></ion-icon>
+      <ion-label>我的评论</ion-label>
+    </ion-item>
+    <ion-item button detail (click)="jump()">
+      <ion-icon src="../../assets/history.svg"></ion-icon>
+      <ion-label>浏览历史</ion-label>
+    </ion-item>
+    <ion-item button detail (click)="jump()">
+      <ion-icon src="../../assets/writing.svg"></ion-icon>
+      <ion-label>我要创作</ion-label>
+    </ion-item>
+    <ion-item button detail (click)="jump()">
+      <ion-icon src="../../assets/share.svg"></ion-icon>
+      <ion-label>分享到朋友圈</ion-label>
+    </ion-item>
+    <ion-item button detail (click)="jump()">
+      <ion-icon src="../../assets/setting.svg"></ion-icon>
+      <ion-label>设置</ion-label>
+    </ion-item>
+    <ion-item button detail (click)="jump()">
+      <ion-icon src="../../assets/contact.svg"></ion-icon>
+      <ion-label>联系我们</ion-label>
+    </ion-item>
+  </ion-item-group>
+  
+</ion-content>
